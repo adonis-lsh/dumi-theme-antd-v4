@@ -208,7 +208,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const menuMode = isMobile ? 'inline' : 'horizontal';
   const style = useStyle();
   return (
-    <Menu mode={menuMode} css={style.nav} selectedKeys={[activeMenuItem]} disabledOverflow>
+    <Menu mode={menuMode} css={style.nav} selectedKeys={[activeMenuItem]}>
       {menuItems}
       {additional}
     </Menu>

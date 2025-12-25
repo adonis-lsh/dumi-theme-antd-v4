@@ -43,7 +43,7 @@ const LangSwitch: FC = () => {
     handleLangChange(locales.filter((item) => item.id !== locale)[0].id);
   }, [locale, handleLangChange, locales]);
 
-  let LangSwitchJSX;
+  let LangSwitchJSX: React.ReactElement | null = null;
   // do not render in single language
   if (locales.length > 2 || (!localesEnhance && locales.length > 2)) {
     const langOptions = locales.map((lang) => (
@@ -58,7 +58,7 @@ const LangSwitch: FC = () => {
         size="small"
         defaultValue={locale}
         onChange={handleLangChange}
-        popupMatchSelectWidth={false}
+        dropdownMatchSelectWidth={false}
         getPopupContainer={(trigger) => trigger.parentNode}
       >
         {langOptions}

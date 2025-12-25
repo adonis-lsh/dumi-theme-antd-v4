@@ -5,9 +5,9 @@ import { Col, Popover, Row, Select } from 'antd';
 import classNames from 'classnames';
 import { useLocale, useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
-import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
 import LangSwitch from 'dumi/theme/slots/LangSwitch';
 import RtlSwitch from 'dumi/theme/slots/RtlSwitch';
+import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../SiteContext';
@@ -231,10 +231,15 @@ const Header: FC = () => {
         size="small"
         defaultValue={versionOptions[0]?.value}
         onChange={handleVersionChange}
-        popupMatchSelectWidth={false}
+        dropdownMatchSelectWidth={false}
         getPopupContainer={(trigger) => trigger.parentNode}
-        options={versionOptions}
-      />
+      >
+        {versionOptions.map((option) => (
+          <Select.Option key={option.value} value={option.value}>
+            {option.label}
+          </Select.Option>
+        ))}
+      </Select>
     ) : null,
     <More key="more" />,
     <LangSwitch key={new Date().getTime()} />,
