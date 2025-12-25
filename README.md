@@ -72,6 +72,11 @@ export default defineConfig({
 
 更多配置选项请参考 [官方文档](https://kuangpf.com/dumi-theme-antd)。
 
+## 常见问题
+
+下面这个是原作者的交流群, 如果你遇到了v4版本的一些问题, 可以直接在本仓库提交issue
+<img width=300 src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3aa88f29-0995-4452-8b07-5a46cc522b77">
+
 ## 开发
 
 ```bash
