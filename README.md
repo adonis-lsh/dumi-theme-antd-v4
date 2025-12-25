@@ -4,12 +4,12 @@
 
 基于 [dumi-theme-antd](https://github.com/KuangPF/dumi-theme-antd) 适配的 Ant Design 4.x 版本主题
 
-[![NPM version](https://img.shields.io/npm/v/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
+[![NPM version](https://img.shields.io/npm/v/dumi-theme-antd-v4.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd-v4) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd-v4.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd-v4) [![Github Actions](https://github.com/adonis-lsh/dumi-theme-antd-v4/workflows/Deploy/badge.svg)](https://github.com/adonis-lsh/dumi-theme-antd-v4/actions)
 
 </div>
 
 <p align="center">
-  <a href="https://kuangpf.com/dumi-theme-antd">
+  <a href="https://github.com/adonis-lsh/dumi-theme-antd-v4">
     <img  src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3c0d3907-a524-4ab1-b140-5fc31524f670">
   </a>
 </p>
@@ -40,19 +40,19 @@
 将主题安装到 `devDependencies`：
 
 ```bash
-$ pnpm i dumi-theme-antd -D
+$ pnpm i dumi-theme-antd-v4 -D
 ```
 
 或使用 npm：
 
 ```bash
-$ npm i dumi-theme-antd -D
+$ npm i dumi-theme-antd-v4 -D
 ```
 
 或使用 yarn：
 
 ```bash
-$ yarn add dumi-theme-antd -D
+$ yarn add dumi-theme-antd-v4 -D
 ```
 
 ## 使用
@@ -70,7 +70,7 @@ export default defineConfig({
 });
 ```
 
-更多配置选项请参考 [官方文档](https://kuangpf.com/dumi-theme-antd)。
+更多配置选项请参考 [原版官方文档](https://kuangpf.com/dumi-theme-antd) 或 [本仓库文档](https://github.com/adonis-lsh/dumi-theme-antd-v4)。
 
 ## 常见问题
 
