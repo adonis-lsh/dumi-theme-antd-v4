@@ -1,0 +1,101 @@
+{
+  "name": "dumi-theme-antd-v4",
+  "version": "0.4.4",
+  "description": "Ant Design 4.9.4 官网风格类似的 dumi2 主题插件",
+  "keywords": [
+    "dumi",
+    "dumi-theme",
+    "antd",
+    "antd4",
+    "antd-v4"
+  ],
+  "homepage": "https://kuangpf.com/dumi-theme-antd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adonis-lsh/dumi-theme-antd-v4.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:docs": "cross-env APP_ROOT=example dumi build",
+    "build:site": "cross-env APP_ROOT=example DEPLOY_SITE=local dumi build",
+    "site": "node app.js",
+    "dev": "father dev",
+    "docs": "cross-env APP_ROOT=example dumi dev",
+    "lint": "pnpm run lint:es && pnpm run lint:css",
+    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\" --fix",
+    "prepare": "husky install && father link-dev-theme",
+    "prepublishOnly": "father doctor && pnpm run build"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@babel/runtime": "7.22.3",
+    "@ctrl/tinycolor": "3.6.0",
+    "@emotion/css": "11.11.2",
+    "@emotion/react": "11.11.0",
+    "@emotion/server": "11.11.0",
+    "classnames": "2.3.2",
+    "dayjs": "1.11.7",
+    "lodash.clonedeep": "4.5.0",
+    "prism-react-renderer": "2.3.1",
+    "rc-drawer": "6.2.0",
+    "rc-footer": "0.6.8",
+    "rc-util": "5.41.0",
+    "react-intersection-observer": "9.8.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@emotion/babel-preset-css-prop": "11.10.0",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "~18.0.0",
+    "@utopia/eslint-config-react": "^0.0.13",
+    "@utopia/prettier-config-base": "^0.0.13",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.2",
+    "father": "^4.2.2",
+    "father-plugin-dumi-theme": "1.0.0-rc.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^16.2.7"
+  },
+  "peerDependencies": {
+    "antd": "4.9.4",
+    "dumi": "^2.4.18",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "authors": [
+    "lish"
+  ]
+}
