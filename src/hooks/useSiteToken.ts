@@ -9,6 +9,7 @@ interface IUseSiteToken {
     colorBgContainer: string;
     colorText: string;
     colorTextSecondary: string;
+    colorTextTertiary: string;
     colorSplit: string;
     colorFillTertiary: string;
     colorPrimaryBg: string;
@@ -34,6 +35,7 @@ interface IUseSiteToken {
     margin: number;
     marginSM: number;
     marginMD: number;
+    marginXXS: number;
     marginXXL: number;
     borderRadius: number;
     borderRadiusLG: number;
@@ -97,6 +99,7 @@ const useSiteToken = (): IUseSiteToken => {
     colorBgContainer: '#fff',
     colorText: 'rgba(0, 0, 0, 0.85)',
     colorTextSecondary: 'rgba(0, 0, 0, 0.45)',
+    colorTextTertiary: 'rgba(0, 0, 0, 0.25)',
     colorSplit: '#f0f0f0',
     colorFillTertiary: 'rgba(0, 0, 0, 0.04)',
     colorPrimaryBg: '#e6f7ff',
@@ -124,6 +127,7 @@ const useSiteToken = (): IUseSiteToken => {
     margin,
     marginSM: 8, // antd 默认小间距
     marginMD: 24, // antd 5.x 默认是 24
+    marginXXS: 4, // antd 默认极小间距
     marginXXL,
     // antd 4.x 默认圆角（调整为接近 5.x 视觉效果）
     borderRadius: 6, // antd 5.x 默认是 6

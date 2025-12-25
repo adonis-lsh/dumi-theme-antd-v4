@@ -8,7 +8,6 @@ import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import { getTargetLocalePath, isExternalLinks } from '../../utils';
-import { getMoreLinksGroup } from './More';
 import { type IResponsive } from './index';
 
 export interface NavigationProps {
@@ -113,7 +112,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
 
       if (navItem.children) {
         return (
-          <Menu.SubMenu key={key} title={label}>
+          <Menu.SubMenu key={key} title={label} {...({} as any)}>
             {createMenuItems(navItem.children)}
           </Menu.SubMenu>
         );
@@ -144,7 +143,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
       );
     }
     return (
-      <Menu.SubMenu key="multi-lang" title={<span>{locale.name}</span>}>
+      <Menu.SubMenu key="multi-lang" title={<span>{locale.name}</span>} {...({} as any)}>
         {locales
           .filter((item) => item.id !== locale.id)
           .map((item) => {
@@ -164,7 +163,17 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     );
   }, [locale, locales]);
 
-  const moreLinksItems = getMoreLinksGroup(moreLinks) || [];
+  // 从 moreLinks 创建菜单项
+  const moreLinksItems: React.ReactNode[] =
+    moreLinks && Array.isArray(moreLinks) && moreLinks.length > 0
+      ? moreLinks.map((item, index) => (
+          <Menu.Item key={`more-${index}`}>
+            <a href={item.link} target="_blank" rel="noopener noreferrer">
+              {item.text}
+            </a>
+          </Menu.Item>
+        ))
+      : [];
   const additionalItems: React.ReactNode[] = [
     github || socialLinks?.github ? (
       <Menu.Item key="github">
@@ -175,23 +184,6 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     ) : null,
     getLangNode(),
     ...moreLinksItems
-      .filter((item) => item !== null)
-      .map((item) => {
-        const menuItem = item as { key: string; label: React.ReactNode; children?: any[] };
-        if (menuItem.children && menuItem.children.length > 0) {
-          return (
-            <Menu.SubMenu key={menuItem.key} title={menuItem.label}>
-              {menuItem.children
-                .filter((child) => child !== null)
-                .map((child) => {
-                  const childItem = child as { key: string; label: React.ReactNode };
-                  return <Menu.Item key={childItem.key}>{childItem.label}</Menu.Item>;
-                })}
-            </Menu.SubMenu>
-          );
-        }
-        return <Menu.Item key={menuItem.key}>{menuItem.label}</Menu.Item>;
-      })
   ].filter(Boolean) as React.ReactNode[];
 
   let additional: React.ReactNode[] = [];
@@ -199,7 +191,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     additional = additionalItems;
   } else if (responsive === 'crowded') {
     additional = [
-      <Menu.SubMenu key="additional" title={<MenuFoldOutlined />}>
+      <Menu.SubMenu key="additional" title={<MenuFoldOutlined />} {...({} as any)}>
         {additionalItems}
       </Menu.SubMenu>
     ];

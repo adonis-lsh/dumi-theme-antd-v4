@@ -28,9 +28,10 @@ const useStyle = () => {
       height: 72px;
       line-height: 72px;
       text-decoration: none;
+      color: #1677ff;
 
       ${iconCls} {
-        color: #999;
+        color: #1677ff;
         font-size: ${fontSizeIcon}px;
         transition: all 0.3s;
       }
@@ -56,6 +57,7 @@ const useStyle = () => {
         transition: inset-inline-end 0.3s;
         margin-inline-end: 1em;
         inset-inline-end: 0;
+        color: #1677ff;
       }
 
       &:hover .footer-nav-icon-before {
@@ -80,6 +82,7 @@ const useStyle = () => {
         line-height: 0;
         left: 0;
         transition: left 0.3s;
+        color: #1677ff;
       }
 
       &:hover .footer-nav-icon-after {

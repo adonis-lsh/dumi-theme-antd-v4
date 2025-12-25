@@ -1,13 +1,10 @@
 /**
  * bash 选项卡切换组件
  */
-import { useMemo, FC, useCallback, useContext } from 'react';
 import { Tabs } from 'antd';
-import { type Language } from 'prism-react-renderer';
-import type { TabsProps } from 'antd';
 import SourceCode from 'dumi/theme-default/builtins/SourceCode';
-import SiteContext from '../../slots/SiteContext';
-import type { SiteContextProps } from '../../slots/SiteContext';
+import { type Language } from 'prism-react-renderer';
+import { FC, useCallback, useMemo } from 'react';
 
 export interface TabItemsType {
   key?: string;
@@ -39,26 +36,27 @@ const BashTabs: FC<BashTabsProps> = (props) => {
     );
   }, []);
 
-  const items: TabsProps['items'] = useMemo(() => {
+  const tabPanes = useMemo(() => {
     return tabItems
       ?.map((item) => {
         const { key = String(Date.now()), children, lang = 'bash' } = item;
         if (children) {
-          return {
-            key,
-            children: <SourceCode lang={lang}>{children}</SourceCode>,
-            label: renderLabel(item)
-          };
+          return (
+            <Tabs.TabPane key={key} tab={renderLabel(item)}>
+              <SourceCode lang={lang}>{children}</SourceCode>
+            </Tabs.TabPane>
+          );
         }
-        return {
-          key: '',
-          label: ''
-        };
+        return null;
       })
-      .filter((i) => i.key);
+      .filter((i) => i !== null);
   }, [tabItems, renderLabel]);
 
-  return <Tabs className="antd-site-snippet" defaultActiveKey={defaultActiveKey} items={items} />;
+  return (
+    <Tabs className="antd-site-snippet" defaultActiveKey={defaultActiveKey}>
+      {tabPanes}
+    </Tabs>
+  );
 };
 
 export default BashTabs;

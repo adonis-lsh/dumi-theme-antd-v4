@@ -1,47 +1,26 @@
-import { TinyColor } from '@ctrl/tinycolor';
 import { css } from '@emotion/react';
-import RcFooter from 'rc-footer';
 import cloneDeep from 'lodash.clonedeep';
-import { useContext, useCallback } from 'react';
-import { type FC } from 'react';
+import RcFooter from 'rc-footer';
 import type { FooterColumn } from 'rc-footer/lib/column';
-import useSiteToken from '../../hooks/useSiteToken';
+import { useCallback, useContext, type FC } from 'react';
 import useLocaleValue from '../../hooks/useLocaleValue';
-import SiteContext from '../SiteContext';
+import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../SiteContext';
-
-/**
- * 替代 antd 5.x 的 getAlphaColor 函数
- * 根据基础颜色和背景色计算带透明度的颜色
- */
-function getAlphaColor(color: string, background: string): string {
-  const baseColor = new TinyColor(color);
-  const bgColor = new TinyColor(background);
-
-  // 如果基础颜色是浅色，返回一个带透明度的深色
-  // 如果基础颜色是深色，返回一个带透明度的浅色
-  if (baseColor.isLight()) {
-    return baseColor.setAlpha(0.1).toRgbString();
-  }
-  return baseColor.setAlpha(0.1).toRgbString();
-}
+import SiteContext from '../SiteContext';
 
 const useStyle = () => {
   const { token } = useSiteToken();
   const footerLinks = useLocaleValue('footerLinks');
   const { isMobile } = useContext<SiteContextProps>(SiteContext);
-  const background = new TinyColor(getAlphaColor('#f0f3fa', '#fff'))
-    .onBackground(token.colorBgContainer)
-    .toHexString();
 
   return {
     holder: css`
-      background: ${background};
+      background: rgb(240, 243, 250);
     `,
 
     footer: css`
-      background: ${background};
-      color: ${token.colorTextSecondary};
+      background: rgb(240, 243, 250);
+      color: rgba(0, 0, 0, 0.65);
       box-shadow: inset 0 106px 36px -116px rgba(0, 0, 0, 0.14);
 
       * {
@@ -50,7 +29,7 @@ const useStyle = () => {
 
       h2,
       a {
-        color: ${token.colorText};
+        color: rgba(0, 0, 0, 0.65);
       }
 
       .rc-footer-column {
